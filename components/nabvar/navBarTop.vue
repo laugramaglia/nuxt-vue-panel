@@ -20,7 +20,7 @@
                 </template>
                 <b-dropdown-item href="/profile">Profile</b-dropdown-item>
                 <b-dropdown-item href="#">Another action</b-dropdown-item>
-                <b-dropdown-item href="#">Something else here</b-dropdown-item>
+                <b-dropdown-item @click="logout()">Log-out</b-dropdown-item>
             </b-dropdown>
         </b-col>
     </b-row>
@@ -38,6 +38,9 @@ export default {
         toggleSidebar(){
             this.$emit('changeStatusSidebar', !this.statusSidebar)
 
+        },
+        async logout(){
+            await this.$auth.logout(/* .... */)
         }
     }
 }

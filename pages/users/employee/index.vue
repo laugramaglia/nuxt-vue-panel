@@ -33,6 +33,7 @@ export default {
       userList,
       userInfo
        },
+    middleware: 'master'
 }
 </script>
 <style lang="scss">

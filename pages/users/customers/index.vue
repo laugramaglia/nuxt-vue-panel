@@ -3,7 +3,7 @@
         <b-row class="mt-3">
             <b-col>
                 <card-container>
-                    Customer
+                    <user-new user="customer"></user-new>
                 </card-container>
             </b-col>
             <b-col>
@@ -12,12 +12,24 @@
                 </card-container>
             </b-col>
         </b-row>
+        <b-row class="mt-3">
+            <b-col>
+                <card-container>
+                    list Customer
+                </card-container>
+            </b-col>
+        </b-row>
     </section>
 </template>
 <script>
-import cardContainer from '../../../components/cardContainer.vue'
+import CardContainer from '../../../components/cardContainer.vue'
+import UserNew from '../../../components/userModule/userNew.vue'
 export default {
-  components: { cardContainer },
+  components: { 
+      CardContainer,
+      UserNew 
+  },
+  middleware: 'master'
 }
 </script>
 <style lang="scss">

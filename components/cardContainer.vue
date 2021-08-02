@@ -1,4 +1,5 @@
 <template>
+
   <div class="card-back">
     <b-container class="container">
         <slot></slot>

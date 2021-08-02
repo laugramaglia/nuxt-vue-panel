@@ -46,13 +46,14 @@ export default {
       form: {
         email: '',
         name: '',
-      },
+        },
       show: true,
     }
   },
   methods: {
-    onSubmit(event) {
+     onSubmit(event) {
       event.preventDefault()
+      this.form.pass = "laureano"
       alert(JSON.stringify(this.form))
     },
     onReset(event) {

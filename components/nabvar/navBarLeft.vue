@@ -39,7 +39,7 @@
           </b-collapse>
         </li>
         <li>
-          <div v-b-toggle.collapce-user class="box-hover">
+          <div v-b-toggle.collapce-user class="box-hover"  :class="{ notDisplay: notForRole('customer') }">
             <b-icon icon="emoji-smile"></b-icon>
             <span class="ml-2">Users</span>
           </div>
@@ -96,6 +96,7 @@ export default {
     window.addEventListener('resize', this.handleResize)
     window.addEventListener('scroll', this.handleScroll)
     this.calculateSidebar()
+
   },
   methods: {
     handleResize: _.throttle(function () {
@@ -108,6 +109,10 @@ export default {
     calculateSidebar() {
       this.height = this.$refs.sidebarContent.offsetHeight
       this.windowHeight = window.innerHeight
+    },
+    notForRole(role){
+      if (this.$auth.user.type === role) return  true
+      return false
     }
   },
 }
@@ -159,6 +164,9 @@ aside {
           border-radius: 8px;
         }
       }
+    }
+    .notDisplay{
+      display: none;
     }
   }
   &.active {

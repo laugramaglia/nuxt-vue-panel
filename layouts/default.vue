@@ -1,24 +1,34 @@
 <template>
   <div>
-    <b-row>
-      <b-col cols="auto" align-self="stretch" class="color-left-bar">
-         <NavBarLeft :active-class='sidebarStatus'/>
-      </b-col>
-      <b-col>
-        <NavBarTop :status-sidebar="sidebarStatus" @changeStatusSidebar="changeStateSidebar($event)" />
-          <Nuxt />
-      </b-col>
-    </b-row>
+    <div v-if="$auth.loggedIn">
+      <b-row>
+        <b-col cols="auto" align-self="stretch" class="color-left-bar">
+          <NavBarLeft :active-class='sidebarStatus'/>
+        </b-col>
+        <b-col>
+          <NavBarTop :status-sidebar="sidebarStatus" @changeStatusSidebar="changeStateSidebar($event)" />
+            <Nuxt />
+        </b-col>
+      </b-row>
+    </div>
+    <div v-else>
+      <not-login></not-login>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBarTop from '../components/nabvar/navBarTop.vue'
 import NavBarLeft from '../components/nabvar/navBarLeft.vue'
+import NotLogin from '../components/not-login/notLogin.vue'
 export default {
   components:{
     NavBarTop,
-    NavBarLeft
+    NavBarLeft,
+    NotLogin
+  },
+  loading: {
+    continuous: true
   },
   data(){
     return{
